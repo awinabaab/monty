@@ -11,7 +11,7 @@ void add_op(stack_t **stack, unsigned int line_number)
 	stack_t *top = *stack;
 	stack_t *next_element;
 
-	if (!stack || !(*stack)->next)
+	if (!*stack || !(*stack)->next)
 	{
 		fprintf(stderr, "L%d: can't add, stack too short\n", line_number);
 		free_on_failure();
