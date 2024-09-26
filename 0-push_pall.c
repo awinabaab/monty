@@ -22,6 +22,7 @@ void push_op(stack_t **stack, unsigned int line_number)
 	if (!new_element)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
+		free_on_failure();
 		exit(EXIT_FAILURE);
 	}
 	new_element->n = command.op_arg;
