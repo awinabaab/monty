@@ -26,6 +26,9 @@ void push_op(stack_t **stack, unsigned int line_number)
 		free_on_failure();
 		exit(EXIT_FAILURE);
 	}
+
+	if (command.op_arg[0] == '-')
+		new_element->n = atoi(command.op_arg + 1) * -1;
 	new_element->n = atoi(command.op_arg);
 	free(command.op_arg);
 	command.op_arg = NULL;
@@ -76,6 +79,9 @@ int check_digit(const char *str)
 {
 	if (!*str || *str == '\0')
 		return (0);
+
+	if (*str == '-')
+		str++;
 
 	while (*str)
 	{

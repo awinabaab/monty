@@ -35,9 +35,8 @@ int main(int argc, char **argv)
 			if (*buffer == '\n' || *buffer == '#')
 				continue;
 			set_command(buffer, " \t\n");
-			if (!command.op)
-				continue;
-			execute(&stack, line_number);
+			if (command.op)
+				execute(&stack, line_number);
 			command.stack = stack;
 		}
 	}
