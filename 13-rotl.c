@@ -17,14 +17,15 @@ void rotl_op(stack_t **stack, unsigned int line_number)
 
 	(void)line_number;
 
-	if (!stack || !*stack)
+	if (!stack || !*stack || !(*stack)->next)
 		return;
 
 	while (temp->next)
 		temp = temp->next;
 
-	if (temp)
-		tail = temp;
+	if (!temp)
+		return;
+	tail = temp;
 
 	if (tail)
 	{
