@@ -11,7 +11,8 @@ void push_op(stack_t **stack, unsigned int line_number)
 	stack_t *top = *stack;
 	stack_t *new_element = NULL;
 
-	if (command.op_arg && check_digit(command.op_arg) == 0)
+	if ((command.op_arg && check_digit(command.op_arg) == 0) ||
+			!command.op_arg)
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		free_on_failure();
