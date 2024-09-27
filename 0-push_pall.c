@@ -11,10 +11,10 @@ void push_op(stack_t **stack, unsigned int line_number)
 	stack_t *top = *stack;
 	stack_t *new_element = NULL;
 
-	if (command.op_arg == -1)
+	if (command.op_arg && check_digit(command.op_arg) == 0)
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
-		free(command.op);
+		free_on_failure();
 		exit(EXIT_FAILURE);
 	}
 
@@ -25,8 +25,8 @@ void push_op(stack_t **stack, unsigned int line_number)
 		free_on_failure();
 		exit(EXIT_FAILURE);
 	}
-	new_element->n = command.op_arg;
-	command.op_arg = 0;
+	new_element->n = atoi(command.op_arg);
+	free(command.op_arg);
 
 	if (!top)
 	{
@@ -62,4 +62,24 @@ void pall_op(stack_t **stack, unsigned int line_number)
 		printf("%d\n", top->n);
 		top = top->next;
 	}
+}
+
+/**
+ * check_digit - Checks if a string is entirely a digit
+ * @str: String
+ *
+ * Return: 0 if false, 1 if true
+ */
+int check_digit(const char *str)
+{
+	if (!*str || *str == '\0')
+		return (0);
+
+	while (*str)
+	{
+		if (!isdigit(*str))
+			return (0);
+		str++;
+	}
+	return (1);
 }
