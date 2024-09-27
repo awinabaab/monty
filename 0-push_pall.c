@@ -27,6 +27,7 @@ void push_op(stack_t **stack, unsigned int line_number)
 	}
 	new_element->n = atoi(command.op_arg);
 	free(command.op_arg);
+	command.op_arg = NULL;
 
 	if (!top)
 	{
@@ -59,7 +60,7 @@ void pall_op(stack_t **stack, unsigned int line_number)
 
 	while (top)
 	{
-		printf("%d\n", top->n);
+		fprintf(stdout, "%d\n", top->n);
 		top = top->next;
 	}
 }
