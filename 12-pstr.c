@@ -13,7 +13,11 @@ void pstr_op(stack_t **stack, unsigned int line_number)
 	(void)line_number;
 
 	if (!stack || !*stack)
+	{
 		printf("\n");
+		return;
+	}
+
 	while (top && top->n != 0 && isascii(top->n))
 	{
 		printf("%c", top->n);
