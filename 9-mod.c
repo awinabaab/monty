@@ -13,12 +13,14 @@ void mod_op(stack_t **stack, unsigned int line_number)
 
 	if (!*stack || !(*stack)->next)
 	{
+		fflush(stdout);
 		fprintf(stderr, "L%d: can't mod, stack too short\n", line_number);
 		free_on_failure();
 		exit(EXIT_FAILURE);
 	}
 	if (top->n == 0)
 	{
+		fflush(stdout);
 		fprintf(stderr, "L%d: division by zero\n", line_number);
 		free_on_failure();
 		exit(EXIT_FAILURE);

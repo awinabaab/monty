@@ -14,7 +14,10 @@ void push_op(stack_t **stack, unsigned int line_number)
 	if ((command.op_arg && check_digit(command.op_arg) == 0) ||
 			!command.op_arg)
 	{
-		fprintf(stderr, "L%d: usage: push integer\n", line_number);
+		fflush(stdout);
+		dprintf(STDERR_FILENO,
+				"L%d: usage: push integer\n",
+				line_number);
 		free_on_failure();
 		exit(EXIT_FAILURE);
 	}
@@ -22,7 +25,8 @@ void push_op(stack_t **stack, unsigned int line_number)
 	new_element = malloc(sizeof(stack_t));
 	if (!new_element)
 	{
-		fprintf(stderr, "Error: malloc failed\n");
+		fflush(stdout);
+		dprintf(STDERR_FILENO, "Error: malloc failed\n");
 		free_on_failure();
 		exit(EXIT_FAILURE);
 	}
@@ -64,7 +68,7 @@ void pall_op(stack_t **stack, unsigned int line_number)
 
 	while (top)
 	{
-		fprintf(stdout, "%d\n", top->n);
+		printf("%d\n", top->n);
 		top = top->next;
 	}
 }

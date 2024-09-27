@@ -12,6 +12,7 @@ void pop_op(stack_t **stack, unsigned int line_number)
 
 	if (!top)
 	{
+		fflush(stdout);
 		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
 		free_on_failure();
 		exit(EXIT_FAILURE);

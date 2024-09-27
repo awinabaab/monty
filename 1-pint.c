@@ -10,9 +10,12 @@ void pint_op(stack_t **stack, unsigned int line_number)
 {
 	if (!*stack)
 	{
-		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
+		fflush(stdout);
+		dprintf(STDERR_FILENO,
+				"L%d: can't pint, stack empty\n",
+				line_number);
 		free_on_failure();
 		exit(EXIT_FAILURE);
 	}
-	fprintf(stdout, "%d\n", (*stack)->n);
+	printf("%d\n", (*stack)->n);
 }
