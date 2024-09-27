@@ -34,8 +34,6 @@ void push_op(stack_t **stack, unsigned int line_number)
 	if (command.op_arg[0] == '-')
 		new_element->n = atoi(command.op_arg + 1) * -1;
 	new_element->n = atoi(command.op_arg);
-	free(command.op_arg);
-	command.op_arg = NULL;
 
 	if (!top)
 	{
