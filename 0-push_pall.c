@@ -44,7 +44,6 @@ void push_op(stack_t **stack, unsigned int line_number)
 		*stack = new_element;
 		return;
 	}
-
 	top->prev = new_element;
 	new_element->next = top;
 	new_element->prev = NULL;
