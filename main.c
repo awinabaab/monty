@@ -31,9 +31,9 @@ int main(int argc, char **argv)
 		if (getline(&buffer, &len, file) != -1)
 		{
 			command.buffer = buffer;
+			line_number++;
 			if (*buffer == '\n' || *buffer == '#')
 				continue;
-			line_number++;
 			set_command(buffer, " \t\n");
 			execute(&stack, line_number);
 			command.stack = stack;
