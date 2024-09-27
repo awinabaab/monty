@@ -12,9 +12,7 @@ void push_op(stack_t **stack, unsigned int line_number)
 			!command.op_arg)
 	{
 		fflush(stdout);
-		dprintf(STDERR_FILENO,
-				"L%d: usage: push integer\n",
-				line_number);
+		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		free_on_failure();
 		exit(EXIT_FAILURE);
 	}
@@ -94,7 +92,7 @@ void push(stack_t **stack, char *s)
 	if (!new_element)
 	{
 		fflush(stdout);
-		dprintf(STDERR_FILENO, "Error: malloc failed\n");
+		fprintf(stderr, "Error: malloc failed\n");
 		free_on_failure();
 		exit(EXIT_FAILURE);
 	}
@@ -132,7 +130,7 @@ void enqueue(stack_t **stack, char *s)
 	if (!new_element)
 	{
 		fflush(stdout);
-		dprintf(STDERR_FILENO, "Error: malloc failed\n");
+		fprintf(stderr, "Error: malloc failed\n");
 		free_on_failure();
 		exit(EXIT_FAILURE);
 	}

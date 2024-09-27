@@ -11,17 +11,14 @@ void pchar_op(stack_t **stack, unsigned int line_number)
 	if (!*stack)
 	{
 		fflush(stdout);
-		dprintf(STDERR_FILENO,
-				"L%d: can't pchar, stack empty\n",
-				line_number);
+		fprintf(stderr, "L%d: can't pchar, stack empty\n", line_number);
 		free_on_failure();
 		exit(EXIT_FAILURE);
 	}
 	if (!isascii((*stack)->n))
 	{
-		dprintf(STDERR_FILENO,
-				"L%d: can't pchar, value out of range\n",
-				line_number);
+		fflush(stdout);
+		fprintf(stderr, "L%d: can't pchar, value out of range\n", line_number);
 		free_on_failure();
 		exit(EXIT_FAILURE);
 	}
