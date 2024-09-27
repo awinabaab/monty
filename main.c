@@ -1,6 +1,6 @@
 #include "monty.h"
 
-command_t command = {NULL, NULL, NULL, NULL, NULL};
+command_t command = {NULL, NULL, NULL, NULL, NULL, NULL};
 
 /**
  * main- Monty byte code interpreter

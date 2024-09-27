@@ -42,7 +42,7 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-/* Stack Operations */
+/* Opcode Operations */
 void push_op(stack_t **stack, unsigned int line_number);
 void pall_op(stack_t **stack, unsigned int line_number);
 void pint_op(stack_t **stack, unsigned int line_number);
@@ -58,6 +58,16 @@ void pchar_op(stack_t **stack, unsigned int line_number);
 void pstr_op(stack_t **stack, unsigned int line_number);
 void rotl_op(stack_t **stack, unsigned int line_number);
 void rotr_op(stack_t **stack, unsigned int line_number);
+void set_queue(stack_t **stack, unsigned int line_number);
+void set_stack(stack_t **stack, unsigned int line_number);
+
+/* Stack Operations */
+void push(stack_t **, char *);
+void pop(stack_t **);
+
+/* Queue Operations */
+void enqueue(stack_t **, char *);
+void dequeue(stack_t **);
 
 /* File Handlers */
 FILE *open_file(char *filename);
@@ -70,6 +80,7 @@ FILE *open_file(char *filename);
  * @file: byte code file
  * @buffer: a line from @file
  * @stack: stack_t stack
+ * @mode: the mode the opcode is executing (queue/stack)
  */
 typedef struct command_s
 {
@@ -78,6 +89,7 @@ typedef struct command_s
 	FILE *file;
 	char *buffer;
 	stack_t *stack;
+	char *mode;
 } command_t;
 extern command_t command;
 

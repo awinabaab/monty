@@ -8,9 +8,6 @@
 
 void push_op(stack_t **stack, unsigned int line_number)
 {
-	stack_t *top = *stack;
-	stack_t *new_element = NULL;
-
 	if ((command.op_arg && check_digit(command.op_arg) == 0) ||
 			!command.op_arg)
 	{
@@ -22,30 +19,19 @@ void push_op(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 
-	new_element = malloc(sizeof(stack_t));
-	if (!new_element)
+	if (command.mode && strcmp(command.mode, "stack") == 0)
 	{
-		fflush(stdout);
-		dprintf(STDERR_FILENO, "Error: malloc failed\n");
-		free_on_failure();
-		exit(EXIT_FAILURE);
-	}
-
-	if (command.op_arg[0] == '-')
-		new_element->n = atoi(command.op_arg + 1) * -1;
-	new_element->n = atoi(command.op_arg);
-
-	if (!top)
-	{
-		new_element->next = NULL;
-		new_element->prev = NULL;
-		*stack = new_element;
+		push(stack, command.op_arg);
 		return;
 	}
-	top->prev = new_element;
-	new_element->next = top;
-	new_element->prev = NULL;
-	*stack = new_element;
+
+	if (command.mode && strcmp(command.mode, "queue") == 0)
+	{
+		enqueue(stack, command.op_arg);
+		return;
+	}
+
+	push(stack, command.op_arg);
 }
 
 
@@ -60,7 +46,7 @@ void pall_op(stack_t **stack, unsigned int line_number)
 	stack_t *top = *stack;
 
 	(void)line_number;
-	if (!*stack)
+	if (!stack || !*stack)
 		return;
 
 	while (top)
@@ -91,4 +77,83 @@ int check_digit(const char *str)
 		str++;
 	}
 	return (1);
+}
+
+
+/**
+ * push - Adds a node to the top of a stack_t stack
+ * @stack: stack_t stack
+ * @s: data for new element
+ */
+
+void push(stack_t **stack, char *s)
+{
+	stack_t *new_element = NULL;
+
+	new_element = malloc(sizeof(stack_t));
+	if (!new_element)
+	{
+		fflush(stdout);
+		dprintf(STDERR_FILENO, "Error: malloc failed\n");
+		free_on_failure();
+		exit(EXIT_FAILURE);
+	}
+	if (s[0] == '-')
+		new_element->n = atoi(s + 1) * -1;
+	else
+		new_element->n = atoi(s);
+
+	if (!*stack)
+	{
+		new_element->next = NULL;
+		new_element->prev = NULL;
+		*stack = new_element;
+		return;
+	}
+	(*stack)->prev = new_element;
+	new_element->next = *stack;
+	new_element->prev = NULL;
+	*stack = new_element;
+}
+
+
+/**
+ * enqueue - Adds node to the end of a stack_t queue
+ * @stack: stack_t stack
+ * @s: data for new element
+ */
+
+void enqueue(stack_t **stack, char *s)
+{
+	stack_t *temp = *stack;
+	stack_t *new_element = NULL;
+
+	new_element = malloc(sizeof(stack_t));
+	if (!new_element)
+	{
+		fflush(stdout);
+		dprintf(STDERR_FILENO, "Error: malloc failed\n");
+		free_on_failure();
+		exit(EXIT_FAILURE);
+	}
+	if (s[0] == '-')
+		new_element->n = atoi(s + 1) * -1;
+	else
+		new_element->n = atoi(s);
+	new_element->next = NULL;
+
+	if (!stack || !*stack)
+	{
+		*stack = new_element;
+		return;
+	}
+
+	while (temp && temp->next)
+		temp = temp->next;
+
+	if (temp)
+	{
+		new_element->prev = temp;
+		temp->next = new_element;
+	}
 }
