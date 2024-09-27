@@ -57,6 +57,7 @@ void mod_op(stack_t **stack, unsigned int line_number);
 void pchar_op(stack_t **stack, unsigned int line_number);
 void pstr_op(stack_t **stack, unsigned int line_number);
 void rotl_op(stack_t **stack, unsigned int line_number);
+void rotr_op(stack_t **stack, unsigned int line_number);
 
 /* File Handlers */
 FILE *open_file(char *filename);
