@@ -10,6 +10,7 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <string.h>
+#include <ctype.h>
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -69,7 +70,7 @@ FILE *open_file(char *filename);
 typedef struct command_s
 {
 	char *op;
-	int op_arg;
+	char *op_arg;
 	FILE *file;
 	char *buffer;
 	stack_t *stack;
@@ -82,5 +83,6 @@ void execute(stack_t **stack, unsigned int line_number);
 void (*get_op_func(char *op))(stack_t **stack, unsigned int line_number);
 void free_stack(stack_t *stack);
 void free_on_failure(void);
+int check_digit(const char *str);
 
 #endif /* MONTY_H */
