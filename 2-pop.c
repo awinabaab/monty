@@ -55,7 +55,8 @@ void free_on_failure(void)
 {
 	free(command.op);
 	free(command.buffer);
-	free(command.op_arg);
+	if (command.op_arg)
+		free(command.op_arg);
 	free_stack(command.stack);
 	fclose(command.file);
 }
