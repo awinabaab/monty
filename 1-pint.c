@@ -14,5 +14,5 @@ void pint_op(stack_t **stack, unsigned int line_number)
 		free_on_failure();
 		exit(EXIT_FAILURE);
 	}
-	printf("%d\n", (*stack)->n);
+	fprintf(stdout, "%d\n", (*stack)->n);
 }
