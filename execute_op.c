@@ -10,6 +10,12 @@ void execute(stack_t **stack, unsigned int line_number)
 {
 	void (*op_func)(stack_t **, unsigned int) = get_op_func(command.op);
 
+	if (command.op[0] == '#')
+	{
+		free(command.op);
+		return;
+	}
+
 	if (!op_func)
 	{
 		fprintf(stderr, "L%d: unknown instruction %s\n",

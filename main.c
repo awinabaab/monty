@@ -1,6 +1,6 @@
 #include "monty.h"
 
-command_t command = {NULL, -1, NULL, NULL, NULL};
+command_t command = {NULL, NULL, NULL, NULL, NULL};
 
 /**
  * main- Monty byte code interpreter
@@ -39,7 +39,6 @@ int main(int argc, char **argv)
 			command.stack = stack;
 		}
 	}
-	pall_op(&stack, line_number);
 	free(buffer);
 	fclose(file);
 	free_stack(stack);
