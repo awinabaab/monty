@@ -29,4 +29,5 @@ void execute(stack_t **stack, unsigned int line_number)
 	op_func(stack, line_number);
 	free(command.op);
 	command.op = NULL;
+	free(command.op_arg);
 }
