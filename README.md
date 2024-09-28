@@ -30,7 +30,7 @@
    | queue  | [15-set_mode.c](https://github.com/awinabaab/monty/blob/main/15-set_mode.c) | Sets the format of the data structure to a queue (FIFO) |
 
    :warning: <mark>Note: When the first non-space character of a line is `#`, it is treated as a comment</mark>
-   :warning: ==Note: `push` is the only opcode that expects an argument. The argument must be an integer==
+   :warning: <mark><em>Note: `push` is the only opcode that expects an argument. The argument must be an integer</em></mark>
 
 ## Sample Bytecode
    ```
