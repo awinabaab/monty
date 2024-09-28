@@ -1,4 +1,4 @@
-# Monty Bytecode Interpreter
+i# Monty Bytecode Interpreter
   Interpretes and executes opcodes from a monty bytecode file.
 
 ## Usage
@@ -16,8 +16,7 @@
    | pint   | [1-pint.c](https://github.com/awinabaab/monty/blob/main/1-pint.c)           | Prints the value at the top of the stack                 |
    | pop    | [2-pop.c](https://github.com/awinabaab/monty/blob/main/2-pop.c)             | Removes the top element of the stack                     |
    | swap   | [3-swap.c](https://github.com/awinabaab/monty/blob/main/3-swap.c)           | Swaps the top two elements of the stack                  |
-   | add    | [4-add.c](https://github.com/awinabaab/monty/blob/main/4-add.c)             | Adds the top two elements of the stack.The result is stored in the second top element\
- and the top element is removed                   |
+   | add    | [4-add.c](https://github.com/awinabaab/monty/blob/main/4-add.c)             | Adds the top two elements of the stack. The result is stored in the second top element and the top element is removed                   |
    | nop    | [5-nop.c](https://github.com/awinabaab/monty/blob/main/5-nop.c)             | Does nothing                                             |
    | sub    | [6-sub.c](https://github.com/awinabaab/monty/blob/main/6-sub.c)             | Subtracts the top element of the stack from the second top element of the stack. The result is stored in the second top element and the top element is removed                 |
    | div    | [7-div.c](https://github.com/awinabaab/monty/blob/main/7-div.c)             | Divides the second top element of the stack by the top element of the stack. The result is stored in the second top element and the top element is removed                 |
