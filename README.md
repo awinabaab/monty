@@ -30,8 +30,8 @@
    | stack  | [15-set_mode.c](https://github.com/awinabaab/monty/blob/main/15-set_mode.c) | Sets the format of the data structure to a stack (LIFO). This is the default behaviour of the program |
    | queue  | [15-set_mode.c](https://github.com/awinabaab/monty/blob/main/15-set_mode.c) | Sets the format of the data structure to a queue (FIFO) |
 
-   :warning:==Note: When the first non-space character of a line is `#`, it is treated as a comment.==
-   :warning:==Note: `push` is the only opcode that expects an argument. The argument must be an integer.==
+   :warning: ==Note: When the first non-space character of a line is `#`, it is treated as a comment.==
+   :warning: ==Note: `push` is the only opcode that expects an argument. The argument must be an integer.==
 
 ## Sample Bytecode
    ``
