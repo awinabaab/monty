@@ -32,12 +32,13 @@ int main(int argc, char **argv)
 		{
 			command.buffer = buffer;
 			line_number++;
-			if (*buffer == '\n' || *buffer == '#')
-				continue;
-			set_command(buffer, " \t\n");
-			if (command.op)
-				execute(&stack, line_number);
-			command.stack = stack;
+			if (*buffer != '\n' || *buffer != '#')
+			{
+				set_command(buffer, " \t\n");
+				if (command.op)
+					execute(&stack, line_number);
+				command.stack = stack;
+			}
 		}
 	}
 	free(buffer);
